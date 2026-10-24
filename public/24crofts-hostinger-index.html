@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24 Crofts — 24crofts.com Cinema 24 Crafts Talent & Production Platform</title>
+  <meta name="description" content="A secure matrimonial platform connecting film professionals with curated profiles, categorized departments, and integrated promotional media advertising features." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&family=Outfit:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --surface: #FFFFFF;
+      --surface-muted: #F3F1EC;
+      --text: #141413;
+      --text-secondary: #52514E;
+      --text-muted: #787671;
+      --accent: #BE123C;
+      --accent-hover: #9F1239;
+      --gold: #D97706;
+      --green: #15803D;
+      --border: #E6E4DD;
+      --border-strong: #DEDBD2;
+      --dark: #0F0E0D;
+      --font-sans: 'Plus Jakarta Sans', 'Noto Sans Telugu', 'Noto Sans Devanagari', system-ui, sans-serif;
+      --font-display: 'Outfit', 'Noto Sans Telugu', 'Noto Sans Devanagari', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-display { font-family: var(--font-display); line-height: 1.22; }
+    .font-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    button, input, select, textarea { font-family: inherit; font-size: inherit; }
+    button { cursor: pointer; }
+    .container { max-width: 1360px; margin: 0 auto; padding: 0 20px; }
+    /* Header & Toolbar */
+    .site-header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 14px 20px; max-width: 1360px; margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-family: var(--font-display); font-size: 1.35rem; font-weight: 700;
+      color: var(--text); background: none; border: none; letter-spacing: -0.02em;
+    }
+    .brand:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .nav-btn {
+      background: none; border: none; border-bottom: 2px solid transparent;
+      padding: 4px 0; font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+    }
+    .nav-btn.active, .nav-btn:hover { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 9px 16px; border-radius: 10px; font-size: 0.82rem; font-weight: 600;
+      border: 1px solid transparent; transition: 0.16s ease; text-decoration: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-dark { background: var(--text); color: #fff; }
+    .btn-dark:hover { background: var(--accent); }
+    .btn-gold { background: #B45309; color: #fff; }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-outline { background: var(--surface); border-color: var(--border-strong); color: var(--text); }
+    .btn-outline:hover { border-color: var(--text); background: var(--surface-muted); }
+    .toolbar {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 10px 20px;
+    }
+    .toolbar-inner {
+      max-width: 1360px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .search-group { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 280px; flex-wrap: wrap; }
+    .input, .select, .textarea {
+      width: 100%; padding: 9px 12px; border-radius: 8px;
+      border: 1px solid var(--border-strong); background: var(--bg);
+      font-size: 0.85rem; color: var(--text);
+    }
+    .input:focus, .select:focus, .textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .lang-switch { display: inline-flex; background: var(--surface-muted); padding: 3px; border-radius: 8px; border: 1px solid var(--border); }
+    .lang-btn { border: none; background: transparent; padding: 4px 10px; border-radius: 6px; font-size: 0.76rem; font-weight: 600; color: var(--text-secondary); }
+    .lang-btn.active { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+    /* Hero & Stats */
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+      overflow: hidden; margin-top: 24px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 7fr 5fr; }
+    .hero-copy { padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+    .kicker { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+    .hero-title { font-size: clamp(1.75rem, 3vw, 2.55rem); font-weight: 700; color: var(--text); margin-top: 6px; }
+    .hero-sub { font-size: 0.95rem; color: var(--text-secondary); max-width: 62ch; margin-top: 10px; }
+    .hero-media { position: relative; min-height: 300px; background: var(--dark); }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+    .hero-caption {
+      position: absolute; inset: auto 0 0 0; padding: 18px 22px;
+      background: linear-gradient(to top, rgba(0,0,0,0.88), transparent); color: #fff; font-size: 0.78rem;
+    }
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border); background: var(--bg);
+    }
+    .stat-cell { padding: 16px 22px; border-right: 1px solid var(--border); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px; }
+    /* Sections & Grids */
+    .section { margin-top: 36px; }
+    .section-head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    /* Dark Theatrical Ad Box */
+    .theater-box {
+      background: var(--dark); color: var(--bg); border-radius: 20px;
+      padding: 28px; border: 1px solid #262522; margin-bottom: 22px;
+    }
+    .ad-card-dark {
+      background: #181715; border: 1px solid #2E2D2A; border-radius: 14px;
+      overflow: hidden; text-align: left; color: #fff; display: flex; flex-direction: column;
+    }
+    .ad-card-dark:hover { border-color: var(--accent); }
+    .ad-card-light {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; text-align: left; color: var(--text); display: flex; flex-direction: column;
+    }
+    .ad-card-light:hover { border-color: var(--text); }
+    .ad-thumb { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+    .ad-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .ad-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.78); color: #FBBF24; font-family: var(--font-mono);
+      font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;
+    }
+    .ad-body { padding: 14px; }
+    /* Profile Cards */
+    .profile-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+      transition: border-color 0.16s ease;
+    }
+    .profile-card:hover { border-color: var(--text); }
+    .profile-media { position: relative; aspect-ratio: 4/3; background: #141413; overflow: hidden; }
+    .profile-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .id-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(20,20,19,0.88); color: #fff; font-family: var(--font-mono);
+      font-size: 0.72rem; font-weight: 700; padding: 4px 9px; border-radius: 6px;
+    }
+    .tier-badge {
+      position: absolute; top: 10px; right: 10px;
+      font-size: 0.7rem; font-weight: 700; padding: 4px 9px; border-radius: 6px;
+    }
+    .tier-paid { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+    .tier-today { background: #DCFCE7; color: #166534; }
+    .profile-body { padding: 16px; space-y: 8px; }
+    .profile-meta { font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .profile-name { font-size: 1.08rem; font-weight: 700; margin-top: 4px; color: var(--text); }
+    .profile-role { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+    .profile-bio { font-size: 0.8rem; color: var(--text-secondary); margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .contact-strip {
+      margin-top: 10px; padding: 8px 10px; border-radius: 8px;
+      font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
+    }
+    .contact-locked { background: var(--surface-muted); color: var(--text-secondary); }
+    .contact-unlocked { background: #ECFDF5; color: var(--green); border: 1px solid #A7F3D0; }
+    .profile-foot {
+      padding: 12px 16px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    /* Craft Cards */
+    .craft-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 18px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+    }
+    .craft-card:hover { border-color: var(--accent); }
+    /* Modals */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 60; background: rgba(15, 14, 13, 0.72);
+      display: flex; align-items: center; justify-content: center; padding: 16px; overflow-y: auto;
+    }
+    .modal-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+      max-width: 960px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 24px;
+    }
+    /* Forms & Portals */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px; }
+    .label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 8px; padding: 12px; background: var(--bg); border: 1px solid var(--border-strong); border-radius: 10px; }
+    .toast {
+      position: fixed; bottom: 20px; right: 20px; z-index: 80;
+      background: var(--text); color: #fff; padding: 12px 18px; border-radius: 12px;
+      font-size: 0.82rem; font-weight: 600; box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+    th { color: var(--text-muted); font-weight: 600; background: var(--bg); }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // =========================================================================
+    // 1. 24 TRADITIONAL CINEMA CRAFTS TAXONOMY (Telugu, English, Hindi)
+    // =========================================================================
+    const CRAFTS_24 = [
+      { id: 'direction', number: 1, isCasting: false, nameTe: 'దర్శకత్వ విభాగం (Direction)', nameEn: 'Direction Department', nameHi: 'निर्देशन विभाग', taglineTe: '"నౌకకు కెప్టెన్" వంటివారు.', subCategories: ['ప్రధాన దర్శకుడు (Main Director)', 'సహ-దర్శకుడు (Co-Director)', 'అసోసియేట్ డైరెక్టర్ (Associate Director)', 'మొదటి సహాయ దర్శకుడు (1st AD)', 'రెండవ సహాయ దర్శకుడు (2nd AD)', 'మూడవ సహాయ దర్శకుడు (3rd AD)', 'స్క్రిప్ట్ సూపర్‌వైజర్ (Script Supervisor)'] },
+      { id: 'writers', number: 2, isCasting: false, nameTe: 'సినిమా రచయితలు / స్క్రిప్ట్ విభాగం', nameEn: 'Film Writers & Script Dept', nameHi: 'पटकथा और लेखक विभाग', taglineTe: 'బ్లూప్రింట్ సృష్టికర్తలు.', subCategories: ['కథా రచయిత (Story Writer)', 'స్క్రీన్‌ప్లే రచయిత (Screenplay Writer)', 'సంభాషణల రచయిత (Dialogue Writer)', 'స్క్రిప్ట్ డాక్టర్ (Script Doctor)'] },
+      { id: 'artists', number: 3, isCasting: true, nameTe: 'సినీ కళాకారులు (నటీనటులు / Casting)', nameEn: 'Cine Artists & Actors (Casting)', nameHi: 'सिने कलाकार (अभिनेता/अभिनेत्री)', taglineTe: 'ప్రధాన తారాగణం మరియు సహాయ నటులు.', subCategories: ['కథానాయకుడు (Lead Actor / Hero)', 'కథానాయిక (Lead Actress / Heroine)', 'ప్రతినాయకుడు (Antagonist / Villain)', 'బాలనటుడు (Child Artist)', 'పాత్రధారులు (Character Artists)', 'అతిథి నటులు (Cameo / Guest)', 'నేపథ్య నటులు (Supporting Cast)'] },
+      { id: 'junior-artists', number: 4, isCasting: true, nameTe: 'జూనియర్ ఆర్టిస్టులు (Junior Artists)', nameEn: 'Junior Artists', nameHi: 'जूनियर कलाकार', taglineTe: 'నేపథ్యంలోని జనసమూహాలు మరియు వాతావరణాన్ని సృష్టించే కళాకారులు.', subCategories: ['ఫీచర్డ్ జూనియర్ ఆర్టిస్టులు (Featured Junior Artists)', 'క్రౌడ్ ఆర్టిస్టులు (Crowd Performers)', 'సాంప్రదాయ & పీరియడ్ ఎక్స్‌ట్రాలు (Period Crowd)'] },
+      { id: 'dubbing', number: 5, isCasting: true, nameTe: 'డబ్బింగ్ ఆర్టిస్టులు (Dubbing & Voice)', nameEn: 'Dubbing & Voice Artists', nameHi: 'डबिंग और वॉइस कलाकार', taglineTe: 'పోస్ట్-ప్రొడక్షన్‌లో సంభాషణలను రికార్డ్ చేసే వాయిస్ నటులు.', subCategories: ['ప్రధాన పాత్ర వాయిస్ ఆర్టిస్ట్ (Lead Voice)', 'బహుభాషా డబ్బింగ్ ఆర్టిస్ట్ (Multilingual Dubbing)', 'వాయిస్ ఓవర్ & వ్యాఖ్యాత (Voice-Over)'] },
+      { id: 'cinematography', number: 6, isCasting: false, nameTe: 'సినిమాటోగ్రఫీ విభాగం (Cinematography)', nameEn: 'Cinematography Department', nameHi: 'छायांकन (Cinematography)', taglineTe: 'కెమెరా ఆపరేషన్లు మరియు దృశ్య వాతావరణాన్ని నిర్వహించడం.', subCategories: ['డైరెక్టర్ ఆఫ్ ఫోటోగ్రఫీ (DOP)', 'కెమెరా ఆపరేటర్ (Camera Operator)', 'ఫోకస్ పుల్లర్ (1st AC)', 'రెండవ కెమెరా అసిస్టెంట్ (2nd AC)', 'క్లాపర్ లోడర్ (Clapper Loader)'] },
+      { id: 'lighting', number: 7, isCasting: false, nameTe: 'అవుట్‌డోర్ లైట్‌మ్యాన్ / ఎలక్ట్రికల్', nameEn: 'Outdoor Lightman & Electrical', nameHi: 'लाइटमैन और इलेक्ट्रिकल', taglineTe: 'సెట్‌లో భౌతిక లైటింగ్ పరికరాలను నిర్వహించడం.', subCategories: ['గాఫర్ (Gaffer)', 'బెస్ట్ బాయ్ ఎలక్ట్రిక్ (Best Boy Electric)', 'స్పార్క్స్ / లైట్‌మ్యాన్ (Sparks / Lightman)'] },
+      { id: 'outdoor-unit', number: 8, isCasting: false, nameTe: 'అవుట్‌డోర్ యూనిట్ టెక్నీషియన్లు', nameEn: 'Outdoor Unit Technicians', nameHi: 'आउटडोर यूनिट तकनीशियन', taglineTe: 'లొకేషన్‌లో భారీ పరికరాలను నిర్వహించే ప్రత్యేక సిబ్బంది.', subCategories: ['కీ గ్రిప్ (Key Grip)', 'డాలీ గ్రిప్స్ (Dolly Grips)', 'జిబ్ / క్రేన్ ఆపరేటర్లు (Jib / Crane Operators)'] },
+      { id: 'still-photo', number: 9, isCasting: false, nameTe: 'స్టిల్ ఫోటోగ్రాఫర్ (Still Photographer)', nameEn: 'Still Photographer', nameHi: 'स्टिल फोटोग्राफर', taglineTe: 'ప్రచార, తెరవెనుక మరియు కంటిన్యూటీ చిత్రాలను చిత్రీకరిస్తారు.', subCategories: ['యూనిట్ స్టిల్ ఫోటోగ్రాఫర్ (Unit Still)', 'BTS & పోస్టర్ ఫోటోగ్రాఫర్ (BTS & Poster)'] },
+      { id: 'art', number: 10, isCasting: false, nameTe: 'కళా విభాగం (Art Department)', nameEn: 'Art Department', nameHi: 'कला विभाग (Art Dept)', taglineTe: 'సినిమా యొక్క భౌతిక ప్రపంచాన్ని నిర్మించడం.', subCategories: ['ప్రొడక్షన్ డిజైనర్ (Production Designer)', 'ఆర్ట్ డైరెక్టర్ (Art Director)', 'సెట్ డిజైనర్ (Set Designer)', 'ప్రాప్ మాస్టర్ (Prop Master)'] },
+      { id: 'studio-workers', number: 11, isCasting: false, nameTe: 'స్టూడియో కార్మికులు (సెట్ నిర్మాణం)', nameEn: 'Studio Workers (Set Construction)', nameHi: 'स्टूडियो निर्माण कर्मी', taglineTe: 'డిజైన్లను వాస్తవ రూపంలోకి మార్చే చేతిపని.', subCategories: ['వడ్రంగిలు (Carpenters)', 'పెయింటర్లు (Painters)', 'మౌల్డర్లు (Moulders)', 'సెట్ పెయింటర్లు (Set Painters)'] },
+      { id: 'costume', number: 12, isCasting: true, nameTe: 'కాస్ట్యూమ్ డిజైనర్లు (Costume Design)', nameEn: 'Costume Designers', nameHi: 'कॉस्ट्यूम डिज़ाइनर', taglineTe: 'కాలానికి మరియు నేపథ్యానికి అనుగుణంగా పాత్రలకు స్టైలింగ్ చేయడం.', subCategories: ['వార్డ్‌రోబ్ స్టైలిస్టులు (Wardrobe Stylists)', 'కాస్ట్యూమ్ అసిస్టెంట్లు (Costume Assistants)', 'టైలర్లు / డ్రేపర్లు (Tailors / Drapers)'] },
+      { id: 'makeup', number: 13, isCasting: false, nameTe: 'మేకప్ విభాగం (Makeup & Hair)', nameEn: 'Makeup & Hair Department', nameHi: 'मेकअप और हेयर विभाग', taglineTe: 'రూపాన్ని మెరుగుపరచడం మరియు ప్రోస్థెటిక్స్ నిర్వహించడం.', subCategories: ['కీ మేకప్ ఆర్టిస్ట్ (Key Makeup Artist)', 'హెయిర్ స్టైలిస్ట్ (Hair Stylist)', 'స్పెషల్ ఎఫెక్ట్స్ (SFX) మేకప్ ఆర్టిస్ట్'] },
+      { id: 'stunt', number: 14, isCasting: true, nameTe: 'స్టంట్ విభాగం (యాక్షన్ / Stunts)', nameEn: 'Stunt & Action Department', nameHi: 'स्टंट और एक्शन विभाग', taglineTe: 'భౌతిక ఘర్షణ సన్నివేశాలను డిజైన్ చేయడం.', subCategories: ['స్టంట్ కోఆర్డినేటర్ / యాక్షన్ డైరెక్టర్', 'స్టంట్ పెర్ఫార్మర్లు (Stunt Performers)', 'రిగ్గర్లు (Rigging Specialists)'] },
+      { id: 'choreography', number: 15, isCasting: true, nameTe: 'నృత్య దర్శకత్వం (Choreography)', nameEn: 'Choreography & Dance', nameHi: 'कोरियोग्राफी और नृत्य', taglineTe: 'పాట, నృత్యం లేదా శారీరక కదలికలను రూపొందించడం.', subCategories: ['నృత్య దర్శకులు (Choreographers)', 'సహాయక నృత్య దర్శకులు (Assistant Choreographers)', 'నేపథ్య నృత్యకారులు (Background Dancers)'] },
+      { id: 'editing', number: 16, isCasting: false, nameTe: 'ఎడిటింగ్ విభాగం (Editing, DI & VFX)', nameEn: 'Editing, DI & VFX Department', nameHi: 'एडिटिंग और VFX विभाग', taglineTe: 'కథా ప్రవాహాన్ని కూర్పు చేయడం.', subCategories: ['చీఫ్ ఎడిటర్ (Chief Editor)', 'అసోసియేట్ ఎడిటర్ (Associate Editor)', 'కలరిస్ట్ (DI Colorist)', 'VFX సూపర్‌వైజర్ (VFX Supervisor)'] },
+      { id: 'audiography', number: 17, isCasting: false, nameTe: 'ఆడియోగ్రఫీ / సౌండ్ డిజైన్', nameEn: 'Audiography & Sound Design', nameHi: 'ऑडियोग्राफी और साउंड डिज़ाइन', taglineTe: 'ప్రేక్షకులు వినే ప్రతిదాన్ని నిర్వహించడం.', subCategories: ['ప్రొడక్షన్ సౌండ్ మిక్సర్', 'ఫోలీ ఆర్టిస్టులు (Foley Artists)', 'సౌండ్ డిజైనర్ (Sound Designer)', 'రీ-రికార్డింగ్ మిక్సర్'] },
+      { id: 'music', number: 18, isCasting: false, nameTe: 'సంగీత విభాగం (Music & Singers)', nameEn: 'Music & Playback Department', nameHi: 'संगीत और गायन विभाग', taglineTe: 'సినిమా యొక్క భావోద్వేగ ఆత్మ.', subCategories: ['సంగీత దర్శకుడు (Music Director)', 'గీత రచయితలు (Lyricists)', 'నేపథ్య గాయకులు (Playback Singers)', 'వాయిద్యకారులు (Session Musicians)'] },
+      { id: 'production-exec', number: 19, isCasting: false, nameTe: 'ప్రొడక్షన్ ఎగ్జిక్యూటివ్‌లు (నిర్వహణ)', nameEn: 'Production Executives', nameHi: 'प्रोडक्शन एग्जीक्यूटिव', taglineTe: 'లాజిస్టిక్స్ మరియు బడ్జెట్‌ను నిర్వహించడం.', subCategories: ['లైన్ ప్రొడ్యూసర్ (Line Producer)', 'ప్రొడక్షన్ కంట్రోలర్', 'ప్రొడక్షన్ మేనేజర్లు', 'కాస్టింగ్ డైరెక్టర్ (Casting Director)'] },
+      { id: 'studio-maint', number: 20, isCasting: false, nameTe: 'స్టూడియో నిర్వహణ / ప్రొడక్షన్ అసిస్టెంట్లు', nameEn: 'Studio Maintenance & Spot Boys', nameHi: 'स्टूडियो रखरखाव और स्पॉट बॉय', taglineTe: 'సెట్ యొక్క ఆపరేషనల్ వెన్నెముక.', subCategories: ['ప్రొడక్షన్ రన్నర్లు (Production Runners)', 'స్పాట్ బాయ్స్ (Spot Boys)', 'స్టూడియో ఫ్లోర్ మేనేజర్లు'] },
+      { id: 'publicity', number: 21, isCasting: false, nameTe: 'పబ్లిసిటీ డిజైనర్లు (PRO & Posters)', nameEn: 'Publicity Designers & PRO', nameHi: 'पब्लिसिटी डिज़ाइनर और PRO', taglineTe: 'సినిమాను ప్రజల్లోకి తీసుకెళ్లడం.', subCategories: ['పోస్టర్ డిజైనర్లు (Poster Designers)', 'పబ్లిక్ రిలేషన్స్ ఆఫీసర్ (PRO)', 'ట్రైలర్ కట్ ఎడిటర్లు', 'డిజిటల్ మార్కెటింగ్ స్ట్రాటజిస్ట్'] },
+      { id: 'transport', number: 22, isCasting: false, nameTe: 'సినీ రవాణా / డ్రైవర్లు (Transport)', nameEn: 'Cine Transport & Vanity Drivers', nameHi: 'सिने परिवहन और ड्राइवर', taglineTe: 'తారాగణం, సిబ్బంది మరియు పరికరాలను తరలించడం.', subCategories: ['వానిటీ వ్యాన్ ఆపరేటర్లు', 'భారీ సామాగ్రి ట్రక్ డ్రైవర్లు', 'యూనిట్ క్యాబ్ డ్రైవర్లు'] },
+      { id: 'catering', number: 23, isCasting: false, nameTe: 'క్యాటరింగ్ / ఆహార సేవ (Cine Catering)', nameEn: 'Cine Catering & Craft Services', nameHi: 'सिने कैटरिंग और खाद्य सेवा', taglineTe: 'సెట్‌లోని వందలాది మందికి శక్తినివ్వడం.', subCategories: ['క్రాఫ్ట్ సర్వీసెస్ హెడ్', 'ప్రొడక్షన్ చెఫ్‌లు', 'అవుట్‌డోర్ మొబైల్ కిచెన్ సిబ్బంది'] },
+      { id: 'federation', number: 24, isCasting: false, nameTe: 'ఫెడరేషన్ / యూనియన్ ప్రతినిధులు', nameEn: 'Federation & Union Representatives', nameHi: 'फेडरेशन और यूनियन प्रतिनिधि', taglineTe: 'కార్మిక చట్టాలు, భద్రత మరియు వేతనాలను నిర్ధారించడం.', subCategories: ['సెట్ వెల్ఫేర్ ఆఫీసర్', 'యూనియన్ కోఆర్డినేటర్', 'లీగల్ & రైట్స్ అడ్వైజర్'] }
+    ];
+
+    const INTERESTED_IN_14 = [
+      '1. Acting', '2. Print shoots', '3. Ramp shows', '4. Designer shoots',
+      '5. Ethnic wears', '6. Western wears', '7. Bikini shoots', '8. Lingerie shoots',
+      '9. Swim suit', '10. Calendar shoots', '11. Music Albums', '12. Seminude',
+      '13. Nude shoots', '14. Body paint shoots'
+    ];
+
+    const COMFORTABLE_WITH_LIST = [
+      'A) On screen Kiss', 'B) Love making', 'C) Hug scenes', 'D) Lip lock scenes',
+      'Indian wears', 'Western wears', 'Skirts', 'Bikini', 'Shorts',
+      'Bold Scenes', 'Smoking scenes on screen', 'Drinking scenes on screen',
+      'Driving scenes', 'Able to work Indoor & Outdoor'
+    ];
+
+    const INDUSTRIES = ['Tollywood', 'Kollywood', 'Bollywood', 'Mollywood', 'Sandalwood', 'Pan-India'];
+    const LANGUAGES = ['Telugu', 'English', 'Hindi', 'Tamil', 'Malayalam', 'Kannada', 'Marathi', 'Bengali'];
+
+    // =========================================================================
+    // 2. INITIAL SEED DATA (72 Profiles across 24 Crafts + 18 Priority Ads)
+    // =========================================================================
+    const MALE_NAMES = ['Karthikeya', 'Raghavendra', 'Siddharth', 'Vishwak', 'Harishankar', 'Chaitanya', 'Devaraj', 'Aravind', 'Prudhvi', 'Vikramaditya', 'Narasimha', 'Surya'];
+    const FEMALE_NAMES = ['Ananya', 'Keerthana', 'Meenakshi', 'Sahasra', 'Vaishnavi', 'Pranavi', 'Niharika', 'Bhavani', 'Chandini', 'Sreeleela', 'Lavanya', 'Aishwarya'];
+    const SURNAMES = ['Rao', 'Reddy', 'Varma', 'Naidu', 'Goud', 'Sastry', 'Choudhary', 'Iyer', 'Nair', 'Shetty', 'Menon', 'Raju'];
+    const CITIES = ['Hyderabad', 'Chennai', 'Mumbai', 'Kochi', 'Bengaluru', 'Visakhapatnam', 'Vijayawada', 'Warangal'];
+    const MALE_PHOTOS = [
+      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80'
+    ];
+    const FEMALE_PHOTOS = [
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80'
+    ];
+
+    function buildSeedProfiles() {
+      const list = [];
+      let num = 1001;
+      CRAFTS_24.forEach((craft, cIdx) => {
+        for (let slot = 0; slot < 3; slot++) {
+          const idx = cIdx * 3 + slot;
+          const isFemale = idx % 2 === 1;
+          const firstName = isFemale ? FEMALE_NAMES[idx % FEMALE_NAMES.length] : MALE_NAMES[idx % MALE_NAMES.length];
+          const lastName = SURNAMES[idx % SURNAMES.length];
+          const fullName = firstName + ' ' + lastName;
+          const id = '24C-' + num++;
+          const subCat = craft.subCategories[slot % craft.subCategories.length];
+          const ind = INDUSTRIES[(cIdx + slot) % INDUSTRIES.length];
+          const city = CITIES[(cIdx + slot) % CITIES.length];
+          const phone = '98480' + String(10000 + idx * 37).slice(-5);
+          const photo = isFemale ? FEMALE_PHOTOS[slot % FEMALE_PHOTOS.length] : MALE_PHOTOS[slot % MALE_PHOTOS.length];
+
+          list.push({
+            id,
+            username: 'artist_' + (1000 + idx + 1),
+            password: 'Artist@' + (1000 + idx + 1),
+            fullName,
+            screenName: firstName + ' ' + lastName.charAt(0) + '.',
+            craftId: craft.id,
+            subCategory: subCat,
+            industry: ind,
+            languages: ['Telugu', 'English', 'Hindi'].slice(0, 2 + (slot % 2)),
+            city,
+            area: 'Film Nagar, Road No. ' + ((idx % 12) + 1),
+            state: 'Telangana',
+            aadhaarMasked: 'XXXX-XXXX-' + String(1000 + idx).slice(-4),
+            aadhaarFull: '49128834' + String(1000 + idx).slice(-4),
+            phoneMasked: '+91 ••••• •••' + phone.slice(-2),
+            phoneFull: '+91 ' + phone,
+            emailFull: firstName.toLowerCase() + '.' + id.toLowerCase() + '@24crofts.com',
+            experienceYears: 2 + ((idx * 3) % 14),
+            isPaid: slot === 0 || (slot === 1 && cIdx % 2 === 0),
+            uploadedToday: slot === 0,
+            createdAt: Date.now() - idx * 3600000,
+            bio: 'Verified ' + subCat + ' in ' + craft.nameEn + ' (' + ind + ') with feature film, OTT, and studio production experience.',
+            photos: [photo, MALE_PHOTOS[0], FEMALE_PHOTOS[0]],
+            youtubeLinks: ['https://www.youtube.com/watch?v=ScMzIvxBSi4'],
+            viewsCount: 120 + idx * 7,
+            castingDetails: {
+              age: 22 + (idx % 14),
+              height: isFemale ? '5 ft 6 in' : '5 ft 11 in',
+              weight: isFemale ? '54 kg' : '74 kg',
+              bust: isFemale ? '34 in' : '40 in',
+              waist: isFemale ? '26 in' : '32 in',
+              hip: isFemale ? '36 in' : '38 in',
+              skinTone: 'Warm Wheatish',
+              eyeColour: 'Dark Brown',
+              hairColour: 'Natural Black',
+              shoeSize: isFemale ? 'UK 5' : 'UK 9',
+              maritalStatus: 'Unmarried',
+              presentProfession: 'Film Actor / Model',
+              education: 'B.A. Theatre Arts',
+              dressesComfortable: 'All Indian, Ethnic & Contemporary Western Wardrobe',
+              openForOutstationShoots: true,
+              openForOutOfCountryShoots: true,
+              passport: 'Yes',
+              comfortableWithAllTimings: true,
+              interestedIn: ['1. Acting', '2. Print shoots', '5. Ethnic wears', '6. Western wears', '11. Music Albums'],
+              comfortableWith: ['C) Hug scenes', 'Indian wears', 'Western wears', 'Driving scenes', 'Able to work Indoor & Outdoor'],
+              aim: 'Lead and author-backed roles in Pan-India feature films.',
+              allergiesToDustOrCosmetics: 'None',
+              instagramId: '@' + firstName.toLowerCase() + '_official24c'
+            }
+          });
+        }
+      });
+      return list;
+    }
+
+    function buildSeedAds() {
+      const poster = 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=1000&q=80';
+      const cam = 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=80';
+      return [
+        // 6 Movie Teasers / Songs
+        { id: 'AD-101', type: 'movie_teaser', title: 'Devarakota — Official Theatrical Teaser (4K)', subtitle: 'Pan-India Historical Action Drama · Directed by K. Raghavendra', banner: 'Suvarna Chakram Entertainments', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 1, status: 'approved' },
+        { id: 'AD-102', type: 'movie_teaser', title: 'Nallamala Ratri — First Single Lyrical Song', subtitle: 'Composed by M. Harishankar · Sung by Keerthana Iyer', banner: 'Godavari Talkies', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 2, status: 'approved' },
+        { id: 'AD-103', type: 'movie_teaser', title: 'Soundstage 9 — Mystery Thriller Glimpse', subtitle: 'Shot on ARRI Alexa 35 · Releasing Sankranti', banner: 'Annapurna Cine Frames', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 3, status: 'approved' },
+        { id: 'AD-104', type: 'movie_teaser', title: 'Vennela Theeram — Romantic Musical Promo', subtitle: 'Starring Karthikeya & Ananya · Tollywood Musical', banner: 'Konaseema Creations', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 4, status: 'approved' },
+        { id: 'AD-105', type: 'movie_teaser', title: 'Rudra Veena — Title Announcement Teaser', subtitle: 'Dolby Atmos Soundscape Preview · Bilingual Telugu & Tamil', banner: 'Chola Mandala Pictures', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 5, status: 'approved' },
+        { id: 'AD-106', type: 'movie_teaser', title: 'Pranamam — Classical Dance Anthem Video', subtitle: 'Choreographed by Master Siddharth · 200+ Dancers', banner: 'Navarang Studios', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 6, status: 'approved' },
+        // 6 Pvt Ads
+        { id: 'AD-201', type: 'pvt_ad', title: 'Ramoji & Jubilee Camera Rentals — ARRI Alexa 35', subtitle: '24/7 Outdoor Unit Packages with Focus Puller Crew in Hyderabad', banner: 'CineLens Pro Rentals Pvt Ltd', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: cam, priorityOrder: 1, status: 'approved' },
+        { id: 'AD-202', type: 'pvt_ad', title: 'Luxury Star Vanity Vans — Triple Bedroom Hydraulic', subtitle: 'Available across Hyderabad, Chennai & Mumbai Outdoor Schedules', banner: 'Royal Wheels Cine Transport', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: poster, priorityOrder: 2, status: 'approved' },
+        { id: 'AD-203', type: 'pvt_ad', title: 'Dolby Atmos Mixing & 4K DI Baselight Grading Suite', subtitle: 'Special Package for Independent & Feature Filmmakers', banner: 'Banjara Post-House', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: cam, priorityOrder: 3, status: 'approved' },
+        { id: 'AD-204', type: 'pvt_ad', title: 'Annapurna Outdoor Catering — 500+ Crew Live Kitchen', subtitle: 'Hygienic South & North Indian Unit Buffet Service', banner: 'ruchi Cine Caterers', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: poster, priorityOrder: 4, status: 'approved' },
+        { id: 'AD-205', type: 'pvt_ad', title: 'Period Armour, Weapons & Royal Set Props Warehouse', subtitle: '10,000+ Authentic Props for Historical & Fantasy Shoots', banner: 'Deccan Art Props Studio', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: cam, priorityOrder: 5, status: 'approved' },
+        { id: 'AD-206', type: 'pvt_ad', title: 'High-Speed Technocrane 50ft & Russian Arm Unit', subtitle: 'Certified Stunt & Chase Sequence Camera Rigging', banner: 'GripMaster Outdoor Tech', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: poster, priorityOrder: 6, status: 'approved' },
+        // 6 Special Ads
+        { id: 'AD-301', type: 'special_ad', title: 'OPEN AUDITION CALL: Pan-India Period Drama Lead & Supporting', subtitle: 'Verified Production House Seeking Fresh & Experienced Actors', banner: 'Suvarna Chakram Entertainments', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 1, status: 'approved' },
+        { id: 'AD-302', type: 'special_ad', title: '24 Crafts Federation Annual Skill & Safety Workshop', subtitle: 'Free Certification for Stunt, Lighting & Grip Technicians', banner: 'Telugu Cine Workers Federation', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 2, status: 'approved' },
+        { id: 'AD-303', type: 'special_ad', title: 'Writers Pitch Fest — Direct Story Narration to 15 Producers', subtitle: 'Register with Your 24crofts.com Unique Profile ID', banner: 'Hyderabad Film Chamber Desk', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 3, status: 'approved' },
+        { id: 'AD-304', type: 'special_ad', title: 'Female Lead & Classical Dancer Casting for Bilingual Musical', subtitle: 'Shoot Starts Next Month in Kochi & Chennai', banner: 'Malabar Frame Works', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 4, status: 'approved' },
+        { id: 'AD-305', type: 'special_ad', title: 'VFX & Virtual Production Unreal Engine Artist Hiring', subtitle: 'Full-Time & Freelance Contracts for Feature Film Pipeline', banner: 'Astra VFX Labs Hyderabad', youtubeUrl: 'https://www.youtube.com/watch?v=ScMzIvxBSi4', image: poster, priorityOrder: 5, status: 'approved' },
+        { id: 'AD-306', type: 'special_ad', title: 'Child Artists & Voice Actors Needed for Animated Mythological', subtitle: 'Telugu, Hindi & Tamil Dubbing & Performance Roles', banner: 'Bala Chitra Studios', youtubeUrl: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', image: cam, priorityOrder: 6, status: 'approved' }
+      ];
+    }
+
+    // =========================================================================
+    // 3. STATE & LOCALSTORAGE PERSISTENCE
+    // =========================================================================
+    const STORAGE_KEY = '24crofts_singlefile_state_v1';
+
+    function loadInitialState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return {
+        siteSettings: {
+          headlineTe: '24 విభాగాల సినీ ప్రతిభను, ప్రొడక్షన్ హౌస్‌లతో సురక్షితంగా కలిపే వేదిక.',
+          subTe: 'ప్రతి ప్రొఫైల్‌కు ప్రత్యేక ID, ఆధార్ ధృవీకరణ మరియు అడ్మిన్ ఆమోదించిన ప్రొడక్షన్ హౌస్‌లకు మాత్రమే కనిపించే ఎన్‌క్రిప్టెడ్ కాంటాక్ట్ భద్రత.',
+          contactEmail: '24croftsindia@gmail.com',
+          contactPhone: '7989144860',
+          contactLocation: 'Hyderabad, India',
+          adsensePublisherId: 'ca-pub-2400240024002400',
+          adsenseConsoleUrl: 'https://www.google.com/adsense'
+        },
+        adminCreds: { username: 'Admin', password: 'Bchakriraju1992@' },
+        profiles: buildSeedProfiles(),
+        productionHouses: [
+          { id: 'PH-501', bannerName: 'Suvarna Chakram Entertainments', producerName: 'K. Suryanarayana Raju', username: 'suvarna_films', password: 'Studio@2026', industry: 'Tollywood', city: 'Hyderabad', aadhaarMasked: 'XXXX-XXXX-8821', movieFormName: 'TFCC_Movie_Reg_Devarakota_2026.pdf', phone: '+91 9848011223', isApproved: true, canViewContacts: true },
+          { id: 'PH-502', bannerName: 'Dakshina Frame Works', producerName: 'R. Madhavan Nair', username: 'dakshina_studio', password: 'Frame@2026', industry: 'Kollywood', city: 'Chennai', aadhaarMasked: 'XXXX-XXXX-4419', movieFormName: 'SICF_Production_Certificate_2026.pdf', phone: '+91 9444099881', isApproved: false, canViewContacts: false }
+        ],
+        ads: buildSeedAds()
+      };
+    }
+
+    const db = loadInitialState();
+    function saveDb() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); } catch (e) {}
+    }
+
+    const ui = {
+      lang: 'te',
+      section: 'home', // 'home' | 'crafts' | 'register' | 'login' | 'contact' | 'admin'
+      selectedCraftId: null,
+      selectedSubCategory: 'all',
+      searchQuery: '',
+      filterIndustry: 'all',
+      filterLanguage: 'all',
+      activeProfileId: null,
+      activeYoutubeUrl: null,
+      uploadAdModalOpen: false,
+      regTab: 'talent', // 'talent' | 'studio'
+      loginFilter: 'all', // 'all' | 'talent' | 'studio' | 'admin'
+      adminTab: 'profiles', // 'profiles' | 'studios' | 'ads' | 'adsense' | 'hosting'
+      viewer: { role: 'guest', username: '', displayName: '', canViewContacts: false },
+      toast: null,
+      tempPhotos: [],
+      tempYoutubeLinks: ['']
+    };
+
+    function showToast(msg) {
+      ui.toast = msg;
+      render();
+      setTimeout(() => { ui.toast = null; render(); }, 3800);
+    }
+
+    function canViewContacts() {
+      return ui.viewer.role === 'admin' || (ui.viewer.role === 'production_house' && ui.viewer.canViewContacts);
+    }
+
+    function getYoutubeEmbed(url) {
+      if (!url) return null;
+      const m = url.match(/(?:youtu\.be\/|[?&]v=|embed\/)([a-zA-Z0-9_-]{6,})/);
+      return m ? 'https://www.youtube.com/embed/' + m[1] : null;
+    }
+
+    // Check URL query param ?profile=24C-XXXX on startup
+    (function checkUrlProfile() {
+      const params = new URLSearchParams(window.location.search);
+      const pid = params.get('profile');
+      if (pid) ui.activeProfileId = pid.toUpperCase();
+    })();
+
+    // =========================================================================
+    // 4. RENDER ENGINE
+    // =========================================================================
+    function render() {
+      const root = document.getElementById('app');
+      root.innerHTML = `
+        ${renderHeader()}
+        <main class="container" style="padding-bottom:60px;">
+          ${ui.section === 'home' ? renderHome() : ''}
+          ${ui.section === 'crafts' ? renderCraftsDirectory() : ''}
+          ${ui.section === 'register' ? renderRegistration() : ''}
+          ${ui.section === 'login' ? renderLoginPortal() : ''}
+          ${ui.section === 'contact' ? renderContact() : ''}
+          ${ui.section === 'admin' ? renderAdmin() : ''}
+        </main>
+        ${renderFooter()}
+        ${ui.activeProfileId ? renderProfileModal() : ''}
+        ${ui.activeYoutubeUrl ? renderVideoModal() : ''}
+        ${ui.uploadAdModalOpen ? renderUploadAdModal() : ''}
+        ${ui.toast ? `<div class="toast">${ui.toast}</div>` : ''}
+      `;
+    }
+
+    function renderHeader() {
+      return `
+        <header class="site-header">
+          <div class="header-top">
+            <button class="brand" onclick="navTo('home')">24crofts.com</button>
+            <nav class="nav-links">
+              <button class="nav-btn ${ui.section === 'home' ? 'active' : ''}" onclick="navTo('home')">హోమ్ (Home)</button>
+              <button class="nav-btn ${ui.section === 'crafts' ? 'active' : ''}" onclick="navTo('crafts')">24 విభాగాలు (24 Crafts)</button>
+              <button class="nav-btn ${ui.section === 'register' ? 'active' : ''}" onclick="navTo('register')">రిజిస్ట్రేషన్ (Register)</button>
+              <button class="nav-btn ${ui.section === 'contact' ? 'active' : ''}" onclick="navTo('contact')">సంప్రదించండి (Contact)</button>
+              <button class="nav-btn ${ui.section === 'login' ? 'active' : ''}" onclick="navTo('login')">లాగిన్ / ఖాతా (Login)</button>
+              ${ui.viewer.role === 'admin' ? `<button class="nav-btn ${ui.section === 'admin' ? 'active' : ''}" onclick="navTo('admin')" style="color:var(--green);font-weight:700;">Admin CMS</button>` : ''}
+            </nav>
+            <div style="display:flex;align-items:center;gap:8px;">
+              ${ui.viewer.role !== 'guest'
+                ? `<span style="font-size:0.76rem;font-weight:700;color:var(--green);">${ui.viewer.displayName}</span>
+                   <button class="btn btn-outline" onclick="handleLogout()">Sign Out</button>`
+                : `<button class="btn btn-primary" onclick="navTo('register')">ప్రొఫైల్ నమోదు</button>`}
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="toolbar-inner">
+              <form class="search-group" onsubmit="handleIdSearch(event)">
+                <input id="global-search" class="input" style="max-width:340px;" value="${ui.searchQuery}" oninput="ui.searchQuery=this.value" placeholder="ప్రొఫైల్ ID (ఉదా: 24C-1001), పేరు లేదా నగరం..." />
+                <select class="select" style="width:auto;" onchange="ui.filterIndustry=this.value;render()">
+                  <option value="all">అన్ని ఇండస్ట్రీలు (All Industries)</option>
+                  ${INDUSTRIES.map(ind => `<option value="${ind}" ${ui.filterIndustry === ind ? 'selected' : ''}>${ind}</option>`).join('')}
+                </select>
+                <select class="select" style="width:auto;" onchange="ui.filterLanguage=this.value;render()">
+                  <option value="all">అన్ని భాషలు (All Languages)</option>
+                  ${LANGUAGES.map(l => `<option value="${l}" ${ui.filterLanguage === l ? 'selected' : ''}>${l}</option>`).join('')}
+                </select>
+                <button type="submit" class="btn btn-dark">Search ID</button>
+              </form>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <button class="btn btn-outline" onclick="ui.uploadAdModalOpen=true;render()">+ టీజర్ / యాడ్ అప్‌లోడ్</button>
+              </div>
+            </div>
+          </div>
+        </header>
+      `;
+    }
+
+    function renderHome() {
+      const teasers = db.ads.filter(a => a.type === 'movie_teaser' && a.status === 'approved').sort((a,b) => a.priorityOrder - b.priorityOrder).slice(0, 6);
+      const pvtAds = db.ads.filter(a => a.type === 'pvt_ad' && a.status === 'approved').sort((a,b) => a.priorityOrder - b.priorityOrder).slice(0, 6);
+      const specialAds = db.ads.filter(a => a.type === 'special_ad' && a.status === 'approved').sort((a,b) => a.priorityOrder - b.priorityOrder).slice(0, 6);
+      const todayProfiles = db.profiles.filter(p => p.uploadedToday).slice(0, 6);
+
+      return `
+        <!-- Hero -->
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div>
+                <p class="kicker">భారతీయ సినిమా 24 విభాగాల అధికారిక టాలెంట్ & ప్రొడక్షన్ వేదిక</p>
+                <h1 class="hero-title">${db.siteSettings.headlineTe}</h1>
+                <p class="hero-sub">${db.siteSettings.subTe}</p>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                <button class="btn btn-primary" onclick="navTo('register')">Register Artist / Production House</button>
+                <button class="btn btn-dark" onclick="navTo('crafts')">Explore 24 Crafts Directory</button>
+                <button class="btn btn-outline" onclick="ui.uploadAdModalOpen=true;render()">Upload Movie Teaser / Song</button>
+              </div>
+            </div>
+            <div class="hero-media">
+              <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85" alt="24crofts.com Studio Set" />
+              <div class="hero-caption">
+                <strong class="font-mono" style="color:#FBBF24;">24CROFTS.COM · MATRIMONIAL-GRADE CASTING PRIVACY</strong>
+                <div>Tollywood · Kollywood · Bollywood · Mollywood · Sandalwood · Pan-India</div>
+              </div>
+            </div>
+          </div>
+          <div class="stats-bar">
+            <div class="stat-cell"><div class="stat-num">24</div><div class="stat-label">Traditional Cinema Crafts & Sub-Categories</div></div>
+            <div class="stat-cell"><div class="stat-num">${db.profiles.length}</div><div class="stat-label">Aadhaar-Verified Profiles with Unique IDs</div></div>
+            <div class="stat-cell"><div class="stat-num">AES-256</div><div class="stat-label">Contacts Restricted to Admin-Approved Studios</div></div>
+            <div class="stat-cell"><div class="stat-num">25 + ∞</div><div class="stat-label">Up to 25 Gallery Photos & Unlimited YouTube Links</div></div>
+          </div>
+        </div>
+
+        <!-- 6 Movie Teasers + 6 Pvt Ads + 6 Special Ads -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2 style="font-size:1.45rem;">Cinema Announcements, Teasers, Songs & Ad Showcases</h2>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Every ad placement and display priority rank (#1–#6) is verified and approved by the 24crofts.com Admin Team.</p>
+            </div>
+            <button class="btn btn-primary" onclick="ui.uploadAdModalOpen=true;render()">+ Upload Teaser / Song / YouTube Ad</button>
+          </div>
+
+          <div class="theater-box">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+              <div>
+                <p class="font-mono" style="font-size:0.72rem;color:#FBBF24;">THEATRICAL SHOWCASE · YOUTUBE & STUDIO REELS</p>
+                <h3 style="font-size:1.3rem;color:#fff;">మూవీ టీజర్లు, పాటలు & ప్రకటనలు (6 స్లాట్లు)</h3>
+              </div>
+              <span class="font-mono" style="font-size:0.75rem;color:#A3A19A;">${teasers.length} / 6 Admin-Approved Priority Slots</span>
+            </div>
+            <div class="grid-3">
+              ${teasers.map(ad => `
+                <button class="ad-card-dark" onclick="openVideo('${ad.youtubeUrl}')">
+                  <div class="ad-thumb">
+                    <img src="${ad.image}" alt="${ad.title}" />
+                    <span class="ad-badge">Priority #${ad.priorityOrder} · ▶ Play</span>
+                  </div>
+                  <div class="ad-body">
+                    <div class="font-mono" style="font-size:0.7rem;color:#FBBF24;">${ad.banner}</div>
+                    <div style="font-weight:700;font-size:0.95rem;margin-top:3px;">${ad.title}</div>
+                    <div style="font-size:0.76rem;color:#A3A19A;margin-top:4px;">${ad.subtitle}</div>
+                  </div>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- 6 Pvt Ads -->
+          <div style="margin-bottom:24px;">
+            <h3 style="font-size:1.2rem;margin-bottom:12px;">ప్రైవేట్ యాడ్స్ (Pvt Ads — 6 స్లాట్లు)</h3>
+            <div class="grid-3">
+              ${pvtAds.map(ad => `
+                <button class="ad-card-light" onclick="openVideo('${ad.youtubeUrl}')">
+                  <div class="ad-thumb">
+                    <img src="${ad.image}" alt="${ad.title}" />
+                    <span class="ad-badge">Priority #${ad.priorityOrder}</span>
+                  </div>
+                  <div class="ad-body">
+                    <div class="font-mono" style="font-size:0.7rem;color:var(--accent);font-weight:700;">${ad.banner}</div>
+                    <div style="font-weight:700;font-size:0.92rem;margin-top:3px;">${ad.title}</div>
+                    <div style="font-size:0.76rem;color:var(--text-secondary);margin-top:4px;">${ad.subtitle}</div>
+                  </div>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- 6 Special Ads -->
+          <div>
+            <h3 style="font-size:1.2rem;margin-bottom:12px;">స్పెషల్ యాడ్స్ & క్యాస్టింగ్ ప్రకటనలు (Special Ads — 6 స్లాట్లు)</h3>
+            <div class="grid-3">
+              ${specialAds.map(ad => `
+                <button class="ad-card-light" onclick="openVideo('${ad.youtubeUrl}')">
+                  <div class="ad-thumb">
+                    <img src="${ad.image}" alt="${ad.title}" />
+                    <span class="ad-badge">Special #${ad.priorityOrder}</span>
+                  </div>
+                  <div class="ad-body">
+                    <div class="font-mono" style="font-size:0.7rem;color:#B45309;font-weight:700;">${ad.banner}</div>
+                    <div style="font-weight:700;font-size:0.92rem;margin-top:3px;">${ad.title}</div>
+                    <div style="font-size:0.76rem;color:var(--text-secondary);margin-top:4px;">${ad.subtitle}</div>
+                  </div>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+
+        <!-- Daily Priority Uploads First -->
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="kicker">DAILY PRIORITY #1 · NEWEST REGISTRATIONS FIRST</p>
+              <h2 style="font-size:1.45rem;">రోజువారీ కొత్త ప్రొఫైల్స్ (Today’s Priority Uploads)</h2>
+            </div>
+            <button class="btn btn-outline" onclick="navTo('register')">Upload Your Profile Today →</button>
+          </div>
+          <div class="grid-3">
+            ${todayProfiles.map(renderProfileCard).join('')}
+          </div>
+        </section>
+
+        <!-- 24 Crafts Categories Directory + 3 Profiles per Category -->
+        ${renderCraftsDirectory()}
+      `;
+    }
+
+    function renderCraftsDirectory() {
+      // If a Craft Category is clicked, show its Sub-Categories & Paid Profiles FIRST
+      if (ui.selectedCraftId) {
+        const craft = CRAFTS_24.find(c => c.id === ui.selectedCraftId);
+        const list = db.profiles
+          .filter(p => p.craftId === craft.id && (ui.selectedSubCategory === 'all' || p.subCategory === ui.selectedSubCategory))
+          .sort((a, b) => (a.isPaid === b.isPaid ? b.createdAt - a.createdAt : a.isPaid ? -1 : 1));
+
+        return `
+          <section class="section">
+            <div class="card" style="margin-bottom:20px;">
+              <button class="btn btn-outline" onclick="ui.selectedCraftId=null;ui.selectedSubCategory='all';render()">← 24 విభాగాల జాబితాకు తిరిగి వెళ్ళండి (Back to 24 Crafts)</button>
+              <h2 style="font-size:1.6rem;margin-top:12px;">${craft.number}. ${craft.nameTe} — ${craft.nameEn}</h2>
+              <p style="font-size:0.86rem;color:var(--text-secondary);margin-top:4px;">${craft.taglineTe} · <strong>Paid Priority ప్రొఫైల్స్ మొదట ప్రదర్శించబడుతున్నాయి.</strong></p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+                <button class="btn ${ui.selectedSubCategory === 'all' ? 'btn-primary' : 'btn-outline'}" onclick="ui.selectedSubCategory='all';render()">అన్ని ఉప-విభాగాలు (All Sub-Categories)</button>
+                ${craft.subCategories.map(sub => `
+                  <button class="btn ${ui.selectedSubCategory === sub ? 'btn-primary' : 'btn-outline'}" onclick="ui.selectedSubCategory='${sub.replace(/'/g, "\\'")}';render()">${sub}</button>
+                `).join('')}
+              </div>
+            </div>
+            <div class="grid-3">
+              ${list.map(renderProfileCard).join('')}
+            </div>
+          </section>
+        `;
+      }
+
+      // Default: Show ONLY the 24 main Craft Categories first (clicking opens Sub-Categories with Paid profiles first)
+      // Plus 3 profiles per Category showcase below
+      return `
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <p class="kicker">TRADITIONAL 24 CRAFTS OF CINEMA · MAIN CATEGORIES</p>
+              <h2 style="font-size:1.5rem;">సినిమా 24 విభాగాలు (Click any Category to view Sub-Categories & Paid Priority Profiles)</h2>
+            </div>
+          </div>
+          <div class="grid-4">
+            ${CRAFTS_24.map(c => `
+              <button class="craft-card" onclick="ui.selectedCraftId='${c.id}';ui.selectedSubCategory='all';render()">
+                <div>
+                  <span class="font-mono" style="font-size:0.74rem;font-weight:700;color:var(--accent);">CRAFT #${String(c.number).padStart(2, '0')}</span>
+                  <h3 style="font-size:1rem;margin-top:4px;color:var(--text);">${c.nameTe}</h3>
+                  <p style="font-size:0.76rem;color:var(--text-secondary);margin-top:4px;">${c.taglineTe}</p>
+                </div>
+                <div style="font-size:0.74rem;font-weight:600;color:var(--accent);">${c.subCategories.length} Sub-Categories →</div>
+              </button>
+            `).join('')}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2 style="font-size:1.45rem;">24 విభాగాల వారీగా ప్రొఫైల్స్ (3 Profiles Per Craft Category — 72 Profiles)</h2>
+            </div>
+          </div>
+          ${CRAFTS_24.map(c => {
+            const top3 = db.profiles.filter(p => p.craftId === c.id).slice(0, 3);
+            return `
+              <div style="margin-bottom:32px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+                  <h3 style="font-size:1.15rem;">${c.number}. ${c.nameTe} (${c.nameEn})</h3>
+                  <button class="btn btn-outline" onclick="ui.selectedCraftId='${c.id}';ui.selectedSubCategory='all';render()">ఉప-విభాగాలు & పెయిడ్ ప్రొఫైల్స్ చూడండి →</button>
+                </div>
+                <div class="grid-3">
+                  ${top3.map(renderProfileCard).join('')}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </section>
+      `;
+    }
+
+    function renderProfileCard(p) {
+      const unlocked = canViewContacts();
+      return `
+        <article class="profile-card">
+          <div>
+            <div class="profile-media">
+              <img src="${p.photos[0]}" alt="${p.fullName}" />
+              <span class="id-badge">ID: ${p.id}</span>
+              ${p.isPaid ? `<span class="tier-badge tier-paid">★ Priority Paid</span>` : `<span class="tier-badge tier-today">Verified</span>`}
+            </div>
+            <div class="profile-body">
+              <div class="profile-meta">${p.industry} · ${p.city} · ${p.experienceYears} yrs exp</div>
+              <h3 class="profile-name">${p.fullName}</h3>
+              <div class="profile-role">${p.subCategory}</div>
+              <p class="profile-bio">${p.bio}</p>
+              <div class="contact-strip ${unlocked ? 'contact-unlocked' : 'contact-locked'}">
+                ${unlocked ? `🔓 ${p.phoneFull} (Unlocked)` : `🔒 ${p.phoneMasked} (Admin Approval Only)`}
+              </div>
+            </div>
+          </div>
+          <div class="profile-foot">
+            <button class="btn btn-dark" onclick="ui.activeProfileId='${p.id}';render()">View Full Profile</button>
+            <button class="btn btn-outline" onclick="shareProfile('${p.id}')">Share ID Link</button>
+          </div>
+        </article>
+      `;
+    }
+
+    // =========================================================================
+    // 5. 3 SEPARATE LOGIN PORTALS (NO VISIBLE USERNAMES OR PASSWORDS ANYWHERE)
+    // =========================================================================
+    function renderLoginPortal() {
+      const showCat = ui.loginFilter === 'all' || ui.loginFilter === 'talent';
+      const showStudio = ui.loginFilter === 'all' || ui.loginFilter === 'studio';
+      const showAdmin = ui.loginFilter === 'all' || ui.loginFilter === 'admin';
+
+      return `
+        <section class="section">
+          <div class="card" style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div>
+              <p class="kicker">24CROFTS.COM · SEPARATE ROLE-BASED SECURE LOGIN PORTALS</p>
+              <h1 style="font-size:1.75rem;margin-top:4px;">24 విభాగాల కేటగిరీ · ప్రొడక్షన్ హౌస్ · అడ్మిన్ ప్రత్యేక లాగిన్ పేజీ</h1>
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:4px;">మీ విభాగానికి సంబంధించిన ప్రత్యేక లాగిన్ బాక్స్‌లో మీ User ID మరియు Password ఎంటర్ చేసి లాగిన్ అవ్వండి.</p>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <button class="btn ${ui.loginFilter === 'all' ? 'btn-dark' : 'btn-outline'}" onclick="ui.loginFilter='all';render()">అన్ని లాగిన్లు (All 3 Portals)</button>
+              <button class="btn ${ui.loginFilter === 'talent' ? 'btn-primary' : 'btn-outline'}" onclick="ui.loginFilter='talent';render()">1. 24 Crafts కేటగిరీ లాగిన్</button>
+              <button class="btn ${ui.loginFilter === 'studio' ? 'btn-gold' : 'btn-outline'}" onclick="ui.loginFilter='studio';render()">2. ప్రొడక్షన్ హౌస్ లాగిన్</button>
+              <button class="btn ${ui.loginFilter === 'admin' ? 'btn-green' : 'btn-outline'}" onclick="ui.loginFilter='admin';render()">3. అడ్మిన్ లాగిన్</button>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            ${showCat ? `
+              <div class="card">
+                <p class="kicker">PORTAL 1 · CATEGORY LOGIN</p>
+                <h2 style="font-size:1.3rem;margin-top:4px;">24 విభాగాల కేటగిరీ లాగిన్</h2>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:16px;">24 Crafts Artists & Technicians Separate Login</p>
+                <form onsubmit="handleRoleLogin(event, 'talent')" style="display:flex;flex-direction:column;gap:12px;">
+                  <div>
+                    <label class="label">24 Crafts విభాగం (Select Craft Category)</label>
+                    <select class="select">
+                      <option value="all">అన్ని 24 విభాగాలు (All 24 Cinema Crafts)</option>
+                      ${CRAFTS_24.map(c => `<option value="${c.id}">${c.number}. ${c.nameTe}</option>`).join('')}
+                    </select>
+                  </div>
+                  <div>
+                    <label class="label">Category User ID / Profile ID *</label>
+                    <input id="login-talent-user" class="input" required placeholder="Enter your Category User ID or Profile ID" />
+                  </div>
+                  <div>
+                    <label class="label">Category Password *</label>
+                    <input id="login-talent-pass" type="password" class="input" required placeholder="Enter your password" />
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="width:100%;padding:12px;">Sign In — 24 Crafts Category</button>
+                </form>
+              </div>
+            ` : ''}
+
+            ${showStudio ? `
+              <div class="card">
+                <p class="kicker" style="color:#B45309;">PORTAL 2 · PRODUCTION HOUSE LOGIN</p>
+                <h2 style="font-size:1.3rem;margin-top:4px;">ప్రొడక్షన్ హౌస్ లాగిన్</h2>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:16px;">Film Banners, Studios & Casting Houses Separate Login</p>
+                <form onsubmit="handleRoleLogin(event, 'production_house')" style="display:flex;flex-direction:column;gap:12px;">
+                  <div>
+                    <label class="label">Production House User ID *</label>
+                    <input id="login-studio-user" class="input" required placeholder="Enter your Production House User ID" />
+                  </div>
+                  <div>
+                    <label class="label">Production House Password *</label>
+                    <input id="login-studio-pass" type="password" class="input" required placeholder="Enter your password" />
+                  </div>
+                  <button type="submit" class="btn btn-gold" style="width:100%;padding:12px;">Sign In — Production House</button>
+                </form>
+              </div>
+            ` : ''}
+
+            ${showAdmin ? `
+              <div class="card">
+                <p class="kicker" style="color:var(--green);">PORTAL 3 · ADMIN TEAM LOGIN</p>
+                <h2 style="font-size:1.3rem;margin-top:4px;">వెబ్‌సైట్ అడ్మిన్ లాగిన్</h2>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:16px;">Authorized 24crofts.com Website Admin Team Only</p>
+                <form onsubmit="handleRoleLogin(event, 'admin')" style="display:flex;flex-direction:column;gap:12px;">
+                  <div>
+                    <label class="label">Admin User ID *</label>
+                    <input id="login-admin-user" class="input" required placeholder="Enter Admin User ID" />
+                  </div>
+                  <div>
+                    <label class="label">Admin Password *</label>
+                    <input id="login-admin-pass" type="password" class="input" required placeholder="Enter Admin password" />
+                  </div>
+                  <button type="submit" class="btn btn-dark" style="width:100%;padding:12px;">Sign In — Website Admin</button>
+                </form>
+              </div>
+            ` : ''}
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 6. SEPARATE REGISTRATION PORTALS (24 CRAFTS + CASTING FIELDS & STUDIO)
+    // =========================================================================
+    function renderRegistration() {
+      return `
+        <section class="section">
+          <div class="card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <p class="kicker">VERIFIED ONBOARDING PORTALS</p>
+              <h1 style="font-size:1.65rem;">24 విభాగాల కళాకారులు & ప్రొడక్షన్ హౌస్ రిజిస్ట్రేషన్</h1>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn ${ui.regTab === 'talent' ? 'btn-primary' : 'btn-outline'}" onclick="ui.regTab='talent';render()">1. 24 Crafts Artist / Technician Form</button>
+              <button class="btn ${ui.regTab === 'studio' ? 'btn-gold' : 'btn-outline'}" onclick="ui.regTab='studio';render()">2. Production House Form (Movie Reg. Mandatory)</button>
+            </div>
+          </div>
+
+          ${ui.regTab === 'talent' ? `
+            <form class="card" onsubmit="handleTalentRegister(event)" style="display:flex;flex-direction:column;gap:20px;">
+              <h2 style="font-size:1.3rem;">24 Crafts Artist & Casting Category Complete Registration</h2>
+              <div class="form-grid">
+                <div><label class="label">Full Name *</label><input name="fullName" class="input" required /></div>
+                <div><label class="label">Screen Name *</label><input name="screenName" class="input" required /></div>
+                <div><label class="label">Create User ID *</label><input name="username" class="input" required /></div>
+                <div><label class="label">Create Password *</label><input name="password" type="password" class="input" required /></div>
+                <div>
+                  <label class="label">24 Crafts Category *</label>
+                  <select name="craftId" class="select" required>
+                    ${CRAFTS_24.map(c => `<option value="${c.id}">${c.number}. ${c.nameTe}</option>`).join('')}
+                  </select>
+                </div>
+                <div><label class="label">Sub-Category Role *</label><input name="subCategory" class="input" required placeholder="e.g. Lead Actor / DOP / Main Director" /></div>
+                <div>
+                  <label class="label">Film Industry *</label>
+                  <select name="industry" class="select">
+                    ${INDUSTRIES.map(ind => `<option value="${ind}">${ind}</option>`).join('')}
+                  </select>
+                </div>
+                <div><label class="label">12-Digit Aadhaar Number *</label><input name="aadhaar" class="input" required pattern="\\d{12}" placeholder="12-digit Aadhaar" /></div>
+                <div><label class="label">Upload Aadhaar Card Proof *</label><input type="file" class="input" required /></div>
+                <div><label class="label">Mobile Number (Encrypted) *</label><input name="phone" class="input" required placeholder="10-digit mobile" /></div>
+                <div><label class="label">City *</label><input name="city" class="input" required placeholder="Hyderabad" /></div>
+                <div><label class="label">Full Street & Pin Code Address *</label><input name="area" class="input" required /></div>
+              </div>
+
+              <!-- Casting Category Specific Details (All 28+ Requested Fields) -->
+              <div style="border-top:1px solid var(--border);padding-top:16px;">
+                <h3 style="font-size:1.1rem;color:var(--accent);margin-bottom:12px;">Casting Category Portfolio Details (Physical, Wardrobe & Shoot Preferences)</h3>
+                <div class="form-grid">
+                  <div><label class="label">Age</label><input name="age" type="number" class="input" value="24" /></div>
+                  <div><label class="label">Height</label><input name="height" class="input" placeholder="5 ft 8 in" /></div>
+                  <div><label class="label">Weight</label><input name="weight" class="input" placeholder="62 kg" /></div>
+                  <div><label class="label">Bust / Chest</label><input name="bust" class="input" placeholder="36 in" /></div>
+                  <div><label class="label">Waist</label><input name="waist" class="input" placeholder="28 in" /></div>
+                  <div><label class="label">Hip</label><input name="hip" class="input" placeholder="36 in" /></div>
+                  <div><label class="label">Skin Tone</label><input name="skinTone" class="input" placeholder="Wheatish / Fair / Dusky" /></div>
+                  <div><label class="label">Eye Colour</label><input name="eyeColour" class="input" placeholder="Dark Brown" /></div>
+                  <div><label class="label">Hair Colour</label><input name="hairColour" class="input" placeholder="Natural Black" /></div>
+                  <div><label class="label">Shoe Size</label><input name="shoeSize" class="input" placeholder="UK 8" /></div>
+                  <div><label class="label">Marital Status</label><input name="maritalStatus" class="input" placeholder="Unmarried / Married" /></div>
+                  <div><label class="label">Present Profession</label><input name="presentProfession" class="input" placeholder="Actor / Model" /></div>
+                  <div><label class="label">Education</label><input name="education" class="input" placeholder="Graduate" /></div>
+                  <div><label class="label">Dresses Comfortable</label><input name="dressesComfortable" class="input" placeholder="Ethnic, Western, Traditional" /></div>
+                  <div><label class="label">Open for Outstation Shoots?</label><select name="outstation" class="select"><option>Yes</option><option>No</option></select></div>
+                  <div><label class="label">Open for Out of Country Shoots?</label><select name="outCountry" class="select"><option>Yes</option><option>No</option></select></div>
+                  <div><label class="label">Passport</label><select name="passport" class="select"><option>Yes</option><option>Applied</option><option>No</option></select></div>
+                  <div><label class="label">Comfortable with All Timings?</label><select name="timings" class="select"><option>Yes</option><option>No</option></select></div>
+                  <div><label class="label">Aim in Cinema</label><input name="aim" class="input" placeholder="Lead & character roles" /></div>
+                  <div><label class="label">Allergies to Dust or Cosmetics?</label><input name="allergies" class="input" placeholder="None" /></div>
+                  <div><label class="label">Instagram ID</label><input name="instagramId" class="input" placeholder="@yourhandle" /></div>
+                  <div><label class="label">Membership Tier</label><select name="isPaid" class="select"><option value="true">Priority Paid Profile (Shown First)</option><option value="false">Standard Profile</option></select></div>
+                </div>
+
+                <div style="margin-top:14px;">
+                  <label class="label">Interested In (1 to 14 Categories)</label>
+                  <div class="check-grid">
+                    ${INTERESTED_IN_14.map(item => `<label style="font-size:0.78rem;display:flex;align-items:center;gap:6px;"><input type="checkbox" name="interestedIn" value="${item}" checked /> ${item}</label>`).join('')}
+                  </div>
+                </div>
+
+                <div style="margin-top:14px;">
+                  <label class="label">Comfortable With (A–D & Wardrobe/Scene Comfort)</label>
+                  <div class="check-grid">
+                    ${COMFORTABLE_WITH_LIST.map(item => `<label style="font-size:0.78rem;display:flex;align-items:center;gap:6px;"><input type="checkbox" name="comfortableWith" value="${item}" /> ${item}</label>`).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Up to 25 Gallery Photos & Unlimited YouTube Links -->
+              <div style="border-top:1px solid var(--border);padding-top:16px;" class="form-grid">
+                <div>
+                  <label class="label">Upload Portfolio Photos (Up to 25 Photos from Gallery)</label>
+                  <input type="file" accept="image/*" multiple class="input" onchange="handlePhotoUpload(event)" />
+                  <div style="font-size:0.75rem;color:var(--text-secondary);margin-top:4px;">Selected: ${ui.tempPhotos.length} / 25 Max</div>
+                </div>
+                <div>
+                  <label class="label">Unlimited YouTube Work / Showreel Links</label>
+                  <input name="youtubeUrl" class="input" placeholder="https://www.youtube.com/watch?v=..." />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="padding:14px;font-size:0.95rem;">Complete Registration & Generate Unique Profile ID (24C-XXXX)</button>
+            </form>
+          ` : `
+            <form class="card" onsubmit="handleStudioRegister(event)" style="display:flex;flex-direction:column;gap:16px;">
+              <h2 style="font-size:1.3rem;">Production House Registration (Mandatory Movie Registration Form)</h2>
+              <div class="form-grid">
+                <div><label class="label">Production House / Banner Name *</label><input name="bannerName" class="input" required /></div>
+                <div><label class="label">Producer / Casting Head Name *</label><input name="producerName" class="input" required /></div>
+                <div><label class="label">Create Studio User ID *</label><input name="username" class="input" required /></div>
+                <div><label class="label">Create Studio Password *</label><input name="password" type="password" class="input" required /></div>
+                <div><label class="label">12-Digit Aadhaar Number *</label><input name="aadhaar" class="input" required pattern="\\d{12}" /></div>
+                <div><label class="label">Upload Movie Registration Form (Mandatory) *</label><input name="movieForm" type="file" class="input" required /></div>
+                <div><label class="label">Official Phone Number *</label><input name="phone" class="input" required /></div>
+                <div><label class="label">City *</label><input name="city" class="input" required placeholder="Hyderabad" /></div>
+              </div>
+              <button type="submit" class="btn btn-gold" style="padding:14px;font-size:0.95rem;">Submit Production House for Admin Contact Approval</button>
+            </form>
+          `}
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 7. CONTACT & HYDERABAD MAP SECTION
+    // =========================================================================
+    function renderContact() {
+      return `
+        <section class="section">
+          <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+            <div class="card">
+              <p class="kicker">OFFICIAL HEADQUARTERS · HYDERABAD, INDIA</p>
+              <h1 style="font-size:1.6rem;margin-top:4px;">Contact 24crofts.com Verification Desk</h1>
+              <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:0.9rem;">
+                <div><strong>Email:</strong> <a href="mailto:${db.siteSettings.contactEmail}" class="font-mono">${db.siteSettings.contactEmail}</a></div>
+                <div><strong>Mobile / WhatsApp:</strong> <a href="tel:+91${db.siteSettings.contactPhone}" class="font-mono">+91 ${db.siteSettings.contactPhone}</a></div>
+                <div><strong>Location:</strong> ${db.siteSettings.contactLocation} (Film Nagar, Jubilee Hills)</div>
+              </div>
+              <iframe title="24crofts Hyderabad Map" src="https://www.openstreetmap.org/export/embed.html?bbox=78.395%2C17.410%2C78.435%2C17.435&layer=mapnik&marker=17.421%2C78.412" style="width:100%;height:260px;border:1px solid var(--border);border-radius:12px;margin-top:16px;"></iframe>
+            </div>
+            <form class="card" onsubmit="event.preventDefault();showToast('Encrypted message delivered to 24croftsindia@gmail.com!');this.reset();" style="display:flex;flex-direction:column;gap:12px;">
+              <h2 style="font-size:1.3rem;">Send Encrypted Inquiry to Admin Team</h2>
+              <div><label class="label">Your Name *</label><input class="input" required /></div>
+              <div><label class="label">Mobile Number *</label><input class="input" required /></div>
+              <div><label class="label">Message *</label><textarea rows="4" class="textarea" required></textarea></div>
+              <button type="submit" class="btn btn-primary" style="padding:12px;">Send Secure Message</button>
+            </form>
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 8. ADMIN NO-CODE CMS, CREDENTIALS & GOOGLE ADSENSE DASHBOARD
+    // =========================================================================
+    function renderAdmin() {
+      if (ui.viewer.role !== 'admin') {
+        return `<div class="card" style="margin-top:32px;text-align:center;"><h2>Website Admin Authorization Required</h2><button class="btn btn-primary" style="margin-top:12px;" onclick="ui.loginFilter='admin';navTo('login')">Go to Admin Login</button></div>`;
+      }
+
+      return `
+        <section class="section">
+          <div class="card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <p class="kicker" style="color:var(--green);">24CROFTS.COM NO-CODE ADMIN COMMAND CENTER</p>
+              <h1 style="font-size:1.6rem;">Admin CMS, Profile Credentials, Studio Approvals & AdSense</h1>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <button class="btn ${ui.adminTab === 'profiles' ? 'btn-dark' : 'btn-outline'}" onclick="ui.adminTab='profiles';render()">All Profiles & Passwords (${db.profiles.length})</button>
+              <button class="btn ${ui.adminTab === 'studios' ? 'btn-dark' : 'btn-outline'}" onclick="ui.adminTab='studios';render()">Production Houses (${db.productionHouses.length})</button>
+              <button class="btn ${ui.adminTab === 'ads' ? 'btn-dark' : 'btn-outline'}" onclick="ui.adminTab='ads';render()">Ads & Priority (${db.ads.length})</button>
+              <button class="btn ${ui.adminTab === 'adsense' ? 'btn-dark' : 'btn-outline'}" onclick="ui.adminTab='adsense';render()">Google AdSense Console</button>
+              <button class="btn ${ui.adminTab === 'hosting' ? 'btn-dark' : 'btn-outline'}" onclick="ui.adminTab='hosting';render()">Hosting Cost Estimate</button>
+            </div>
+          </div>
+
+          ${ui.adminTab === 'profiles' ? `
+            <div class="card" style="overflow-x:auto;">
+              <h2 style="font-size:1.2rem;margin-bottom:12px;">All 24 Crafts Profiles — User ID, Password & Contact Directory</h2>
+              <table>
+                <thead>
+                  <tr><th>ID</th><th>Name</th><th>Craft Role</th><th>User ID</th><th>Password</th><th>Full Mobile</th><th>Tier</th></tr>
+                </thead>
+                <tbody>
+                  ${db.profiles.map(p => `
+                    <tr>
+                      <td class="font-mono" style="font-weight:700;color:var(--accent);">${p.id}</td>
+                      <td><strong>${p.fullName}</strong></td>
+                      <td>${p.subCategory}</td>
+                      <td class="font-mono">${p.username}</td>
+                      <td class="font-mono">${p.password}</td>
+                      <td class="font-mono" style="color:var(--green);font-weight:700;">${p.phoneFull}</td>
+                      <td><button class="btn ${p.isPaid ? 'btn-gold' : 'btn-outline'}" onclick="togglePaid('${p.id}')">${p.isPaid ? '★ Paid Priority' : 'Set Paid'}</button></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : ''}
+
+          ${ui.adminTab === 'studios' ? `
+            <div class="card">
+              <h2 style="font-size:1.2rem;margin-bottom:12px;">Production House Approvals (Grant / Revoke Talent Contact Access)</h2>
+              <table>
+                <thead><tr><th>ID</th><th>Banner Name</th><th>User ID / Password</th><th>Movie Reg. Form</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody>
+                  ${db.productionHouses.map(ph => `
+                    <tr>
+                      <td class="font-mono">${ph.id}</td>
+                      <td><strong>${ph.bannerName}</strong><br/><span style="font-size:0.74rem;color:var(--text-secondary);">${ph.producerName}</span></td>
+                      <td class="font-mono">${ph.username} / ${ph.password}</td>
+                      <td style="color:var(--green);font-weight:600;">${ph.movieFormName}</td>
+                      <td>${ph.canViewContacts ? '<span style="color:var(--green);font-weight:700;">Approved (Contacts Unlocked)</span>' : '<span style="color:#B45309;font-weight:700;">Pending Approval</span>'}</td>
+                      <td><button class="btn ${ph.canViewContacts ? 'btn-outline' : 'btn-green'}" onclick="toggleStudio('${ph.id}')">${ph.canViewContacts ? 'Revoke Access' : 'Approve Contact Access'}</button></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : ''}
+
+          ${ui.adminTab === 'ads' ? `
+            <div class="card">
+              <h2 style="font-size:1.2rem;margin-bottom:12px;">Movie Teasers, Songs, Pvt Ads & Special Ads Approval & Priority Order</h2>
+              <table>
+                <thead><tr><th>Priority Rank</th><th>Category</th><th>Title & Banner</th><th>Status</th><th>Controls</th></tr></thead>
+                <tbody>
+                  ${db.ads.map(ad => `
+                    <tr>
+                      <td class="font-mono" style="font-weight:700;">#${ad.priorityOrder}</td>
+                      <td class="font-mono">${ad.type}</td>
+                      <td><strong>${ad.title}</strong> — ${ad.banner}</td>
+                      <td><strong>${ad.status.toUpperCase()}</strong></td>
+                      <td style="display:flex;gap:6px;">
+                        <button class="btn btn-outline" onclick="moveAd('${ad.id}', -1)">↑ Rank Up</button>
+                        <button class="btn btn-outline" onclick="moveAd('${ad.id}', 1)">↓ Rank Down</button>
+                        <button class="btn ${ad.status === 'approved' ? 'btn-outline' : 'btn-green'}" onclick="toggleAdStatus('${ad.id}')">${ad.status === 'approved' ? 'Approved' : 'Approve'}</button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : ''}
+
+          ${ui.adminTab === 'adsense' ? `
+            <div class="card">
+              <p class="kicker" style="color:var(--green);">ADMIN-EXCLUSIVE GOOGLE ADSENSE PANEL (Hidden from Public Home Page)</p>
+              <h2 style="font-size:1.3rem;margin-top:4px;">Google AdSense Integration & Console Link</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);margin:8px 0 16px;">ఈ Google AdSense లింక్ కేవలం అడ్మిన్ ప్యానెల్‌లో మాత్రమే కనిపిస్తుంది, పబ్లిక్ హోమ్ పేజీలో ఎక్కడా కనిపించదు.</p>
+              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+                <a href="${db.siteSettings.adsenseConsoleUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Google AdSense Console ↗</a>
+                <span class="font-mono" style="font-size:0.82rem;">Publisher ID: ${db.siteSettings.adsensePublisherId}</span>
+              </div>
+            </div>
+          ` : ''}
+
+          ${ui.adminTab === 'hosting' ? `
+            <div class="card">
+              <h2 style="font-size:1.3rem;margin-bottom:12px;">Server Hosting, Database Security & Mobile App Maintenance Cost Estimate (INR)</h2>
+              <table>
+                <thead><tr><th>Component</th><th>Specification</th><th>Monthly (INR)</th><th>Annual (INR)</th></tr></thead>
+                <tbody>
+                  <tr><td>Cloud Web & PWA Hosting</td><td>Auto-Scaling Edge CDN + SSL/TLS 1.3</td><td class="font-mono">₹4,500 – ₹9,500</td><td class="font-mono">₹54,000 – ₹1,14,000</td></tr>
+                  <tr><td>Encrypted Database Vault</td><td>AES-256-GCM PII Vault + Daily Backups</td><td class="font-mono">₹3,200 – ₹6,800</td><td class="font-mono">₹38,400 – ₹81,600</td></tr>
+                  <tr><td>Media Storage & CDN</td><td>25 Photos/Profile + Movie Registration Docs</td><td class="font-mono">₹2,000 – ₹5,500</td><td class="font-mono">₹24,000 – ₹66,000</td></tr>
+                  <tr><td>WAF, DDoS & OTP Gateway</td><td>Anti-Scraping Firewall & Audit Logs</td><td class="font-mono">₹1,800 – ₹3,500</td><td class="font-mono">₹21,600 – ₹42,000</td></tr>
+                  <tr><td>iOS/Android Stores & Domain</td><td>24crofts.com Renewal & Maintenance</td><td class="font-mono">₹2,500 – ₹5,000</td><td class="font-mono">₹30,000 – ₹60,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          ` : ''}
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 9. MODALS (PROFILE MODAL, YOUTUBE PLAYER MODAL, UPLOAD AD MODAL)
+    // =========================================================================
+    function renderProfileModal() {
+      const p = db.profiles.find(item => item.id.toUpperCase() === ui.activeProfileId.toUpperCase());
+      if (!p) return '';
+      const unlocked = canViewContacts();
+      const cd = p.castingDetails || {};
+      const embed = getYoutubeEmbed(p.youtubeLinks[0]);
+
+      return `
+        <div class="modal-backdrop" onclick="if(event.target===this){ui.activeProfileId=null;render();}">
+          <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border);padding-bottom:14px;">
+              <div>
+                <span class="font-mono" style="font-size:0.78rem;font-weight:700;color:var(--accent);">UNIQUE ID: ${p.id} · ${p.industry}</span>
+                <h2 style="font-size:1.55rem;">${p.fullName} (${p.screenName})</h2>
+                <div style="font-size:0.86rem;color:var(--text-secondary);">${p.subCategory} · ${p.city}, ${p.state} · Languages (${p.languages.length}): ${p.languages.join(', ')}</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <button class="btn btn-outline" onclick="shareProfile('${p.id}')">Share Link (${p.id})</button>
+                <button class="btn btn-dark" onclick="ui.activeProfileId=null;render()">✕ Close</button>
+              </div>
+            </div>
+
+            <div class="grid-3" style="margin-top:18px;grid-template-columns: 1fr 2fr;">
+              <div>
+                <img src="${p.photos[0]}" alt="${p.fullName}" style="width:100%;border-radius:14px;border:1px solid var(--border);" />
+                <div class="contact-strip ${unlocked ? 'contact-unlocked' : 'contact-locked'}" style="margin-top:12px;padding:12px;">
+                  <strong>Matrimonial Contact Vault</strong><br/>
+                  ${unlocked
+                    ? `Mobile: ${p.phoneFull}<br/>Email: ${p.emailFull}<br/>Aadhaar: ${p.aadhaarFull}`
+                    : `Mobile: ${p.phoneMasked}<br/>Aadhaar: ${p.aadhaarMasked}<br/><span style="font-size:0.72rem;">Only Admin & Approved Production Houses can view contact numbers.</span>`}
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <p style="font-size:0.9rem;">${p.bio}</p>
+                <div style="background:var(--bg);padding:14px;border-radius:12px;border:1px solid var(--border);font-size:0.8rem;">
+                  <strong>Complete Casting Category Portfolio Specifications</strong>
+                  <div class="form-grid" style="margin-top:8px;grid-template-columns:repeat(3,1fr);gap:8px;">
+                    <div><strong>Age:</strong> ${cd.age || 25}</div>
+                    <div><strong>Height:</strong> ${cd.height || '5 ft 8 in'}</div>
+                    <div><strong>Weight:</strong> ${cd.weight || '62 kg'}</div>
+                    <div><strong>Bust/Chest:</strong> ${cd.bust || '36 in'}</div>
+                    <div><strong>Waist:</strong> ${cd.waist || '28 in'}</div>
+                    <div><strong>Hip:</strong> ${cd.hip || '36 in'}</div>
+                    <div><strong>Skin Tone:</strong> ${cd.skinTone || 'Wheatish'}</div>
+                    <div><strong>Eye/Hair:</strong> ${cd.eyeColour || 'Brown'} / ${cd.hairColour || 'Black'}</div>
+                    <div><strong>Shoe Size:</strong> ${cd.shoeSize || 'UK 8'}</div>
+                    <div><strong>Passport:</strong> ${cd.passport || 'Yes'}</div>
+                    <div><strong>Outstation/Abroad:</strong> Yes / Yes</div>
+                    <div><strong>Instagram:</strong> ${cd.instagramId || '@24crofts'}</div>
+                  </div>
+                  <div style="margin-top:8px;"><strong>Interested In:</strong> ${(cd.interestedIn || []).join(', ')}</div>
+                  <div style="margin-top:4px;"><strong>Comfortable With:</strong> ${(cd.comfortableWith || []).join(', ')}</div>
+                </div>
+                ${embed ? `<iframe src="${embed}" style="width:100%;height:240px;border:none;border-radius:12px;" allowfullscreen></iframe>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderVideoModal() {
+      const embed = getYoutubeEmbed(ui.activeYoutubeUrl);
+      return `
+        <div class="modal-backdrop" onclick="if(event.target===this){ui.activeYoutubeUrl=null;render();}">
+          <div class="modal-card" style="max-width:760px;background:#141413;color:#fff;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <h3 style="color:#fff;">24crofts.com Theatrical Screening Room</h3>
+              <button class="btn btn-primary" onclick="ui.activeYoutubeUrl=null;render()">✕ Close</button>
+            </div>
+            ${embed ? `<iframe src="${embed}" style="width:100%;aspect-ratio:16/9;border:none;border-radius:12px;" allowfullscreen></iframe>` : `<p>Video Preview Ready</p>`}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderUploadAdModal() {
+      return `
+        <div class="modal-backdrop" onclick="if(event.target===this){ui.uploadAdModalOpen=false;render();}">
+          <form class="modal-card" style="max-width:560px;display:flex;flex-direction:column;gap:12px;" onsubmit="handleAdSubmit(event)">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <h2>Upload Movie Teaser, Song or YouTube Ad</h2>
+              <button type="button" class="btn btn-outline" onclick="ui.uploadAdModalOpen=false;render()">✕</button>
+            </div>
+            <p style="font-size:0.78rem;color:var(--text-secondary);">All ad placements require Website Admin Team approval before appearing on the Home Page.</p>
+            <div>
+              <label class="label">Ad Slot Category *</label>
+              <select name="type" class="select">
+                <option value="movie_teaser">Movie Teaser / Song / Announcement</option>
+                <option value="pvt_ad">Private Ad (Pvt Ad)</option>
+                <option value="special_ad">Special Ad / Casting Call</option>
+              </select>
+            </div>
+            <div><label class="label">Title *</label><input name="title" class="input" required /></div>
+            <div><label class="label">Production Banner / Sponsor Name *</label><input name="banner" class="input" required /></div>
+            <div><label class="label">YouTube Video Link *</label><input name="youtubeUrl" class="input" required placeholder="https://www.youtube.com/watch?v=..." /></div>
+            <button type="submit" class="btn btn-primary" style="padding:12px;">Submit for Admin Approval</button>
+          </form>
+        </div>
+      `;
+    }
+
+    function renderFooter() {
+      return `
+        <footer style="background:var(--surface);border-top:1px solid var(--border);padding:28px 20px;margin-top:40px;">
+          <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:0.8rem;color:var(--text-secondary);">
+            <div>
+              <strong style="color:var(--text);font-size:0.95rem;">24crofts.com — Cinema 24 Crafts Talent & Production Platform</strong>
+              <div>Email: ${db.siteSettings.contactEmail} · Mobile: +91 ${db.siteSettings.contactPhone} · ${db.siteSettings.contactLocation}</div>
+            </div>
+            <div style="display:flex;gap:14px;">
+              <button class="nav-btn" onclick="navTo('home')">Home</button>
+              <button class="nav-btn" onclick="navTo('crafts')">24 Crafts</button>
+              <button class="nav-btn" onclick="navTo('register')">Register</button>
+              <button class="nav-btn" onclick="navTo('login')">Login</button>
+            </div>
+          </div>
+        </footer>
+      `;
+    }
+
+    // =========================================================================
+    // 10. INTERACTION HANDLERS
+    // =========================================================================
+    function navTo(sec) {
+      ui.section = sec;
+      ui.selectedCraftId = null;
+      window.scrollTo(0, 0);
+      render();
+    }
+
+    function openVideo(url) {
+      ui.activeYoutubeUrl = url;
+      render();
+    }
+
+    function shareProfile(id) {
+      const url = window.location.origin + window.location.pathname + '?profile=' + id;
+      if (navigator.clipboard) navigator.clipboard.writeText(url).catch(() => {});
+      showToast('Shareable Profile ID Link Copied: ' + url);
+    }
+
+    function handleIdSearch(e) {
+      e.preventDefault();
+      const q = (ui.searchQuery || '').trim().toUpperCase();
+      if (!q) return;
+      const exact = db.profiles.find(p => p.id.toUpperCase() === q || p.id.toUpperCase() === '24C-' + q || p.fullName.toUpperCase().includes(q));
+      if (exact) {
+        ui.activeProfileId = exact.id;
+        render();
+      } else {
+        showToast('No profile matched "' + ui.searchQuery + '".');
+      }
+    }
+
+    function handleRoleLogin(e, role) {
+      e.preventDefault();
+      if (role === 'admin') {
+        const u = document.getElementById('login-admin-user').value.trim();
+        const p = document.getElementById('login-admin-pass').value;
+        if (u.toLowerCase() === db.adminCreds.username.toLowerCase() && p === db.adminCreds.password) {
+          ui.viewer = { role: 'admin', username: u, displayName: 'Website Admin', canViewContacts: true };
+          ui.section = 'admin';
+          showToast('Signed in to Website Admin Command Center.');
+          return;
+        }
+        showToast('Invalid Website Admin User ID or Password.');
+        return;
+      }
+
+      if (role === 'production_house') {
+        const u = document.getElementById('login-studio-user').value.trim();
+        const p = document.getElementById('login-studio-pass').value;
+        const studio = db.productionHouses.find(s => s.username.toLowerCase() === u.toLowerCase() && s.password === p);
+        if (studio) {
+          ui.viewer = { role: 'production_house', username: studio.username, displayName: studio.bannerName, canViewContacts: studio.canViewContacts };
+          ui.section = 'home';
+          showToast('Signed in as ' + studio.bannerName);
+          return;
+        }
+        showToast('Invalid Production House User ID or Password.');
+        return;
+      }
+
+      if (role === 'talent') {
+        const u = document.getElementById('login-talent-user').value.trim();
+        const p = document.getElementById('login-talent-pass').value;
+        const prof = db.profiles.find(item => (item.username.toLowerCase() === u.toLowerCase() || item.id.toLowerCase() === u.toLowerCase()) && item.password === p);
+        if (prof) {
+          ui.viewer = { role: 'talent', username: prof.username, displayName: prof.fullName + ' (' + prof.id + ')', canViewContacts: false };
+          ui.activeProfileId = prof.id;
+          ui.section = 'home';
+          showToast('Signed in to 24 Crafts Profile ' + prof.id);
+          return;
+        }
+        showToast('Invalid 24 Crafts Category User ID or Password.');
+      }
+    }
+
+    function handleLogout() {
+      ui.viewer = { role: 'guest', username: '', displayName: '', canViewContacts: false };
+      ui.section = 'home';
+      showToast('Signed out safely.');
+    }
+
+    function handlePhotoUpload(e) {
+      const files = Array.from(e.target.files || []).slice(0, 25);
+      ui.tempPhotos = [];
+      files.forEach(file => {
+        const r = new FileReader();
+        r.onload = () => { if (typeof r.result === 'string' && ui.tempPhotos.length < 25) { ui.tempPhotos.push(r.result); render(); } };
+        r.readAsDataURL(file);
+      });
+    }
+
+    function handleTalentRegister(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const newNum = 1001 + db.profiles.length;
+      const id = '24C-' + newNum;
+      const phone = String(fd.get('phone') || '9848000000');
+      const newProf = {
+        id,
+        username: String(fd.get('username')),
+        password: String(fd.get('password')),
+        fullName: String(fd.get('fullName')),
+        screenName: String(fd.get('screenName')),
+        craftId: String(fd.get('craftId')),
+        subCategory: String(fd.get('subCategory')),
+        industry: String(fd.get('industry')),
+        languages: ['Telugu', 'English'],
+        city: String(fd.get('city')),
+        area: String(fd.get('area')),
+        state: 'Telangana',
+        aadhaarMasked: 'XXXX-XXXX-' + String(fd.get('aadhaar')).slice(-4),
+        aadhaarFull: String(fd.get('aadhaar')),
+        phoneMasked: '+91 ••••• •••' + phone.slice(-2),
+        phoneFull: '+91 ' + phone,
+        emailFull: String(fd.get('username')) + '@24crofts.com',
+        experienceYears: 3,
+        isPaid: fd.get('isPaid') === 'true',
+        uploadedToday: true,
+        createdAt: Date.now(),
+        bio: 'Verified 24crofts.com Professional (' + id + ').',
+        photos: ui.tempPhotos.length ? ui.tempPhotos : [MALE_PHOTOS[0]],
+        youtubeLinks: [String(fd.get('youtubeUrl') || 'https://www.youtube.com/watch?v=ScMzIvxBSi4')],
+        viewsCount: 1,
+        castingDetails: {
+          age: Number(fd.get('age') || 24),
+          height: String(fd.get('height') || '5 ft 8 in'),
+          weight: String(fd.get('weight') || '62 kg'),
+          bust: String(fd.get('bust') || '36 in'),
+          waist: String(fd.get('waist') || '28 in'),
+          hip: String(fd.get('hip') || '36 in'),
+          skinTone: String(fd.get('skinTone') || 'Wheatish'),
+          eyeColour: String(fd.get('eyeColour') || 'Brown'),
+          hairColour: String(fd.get('hairColour') || 'Black'),
+          shoeSize: String(fd.get('shoeSize') || 'UK 8'),
+          passport: String(fd.get('passport') || 'Yes'),
+          instagramId: String(fd.get('instagramId') || '@24crofts'),
+          interestedIn: fd.getAll('interestedIn'),
+          comfortableWith: fd.getAll('comfortableWith')
+        }
+      };
+      db.profiles.unshift(newProf);
+      saveDb();
+      ui.section = 'home';
+      ui.activeProfileId = id;
+      showToast('Registered! Your Unique Profile ID is ' + id);
+    }
+
+    function handleStudioRegister(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const id = 'PH-' + (501 + db.productionHouses.length);
+      db.productionHouses.unshift({
+        id,
+        bannerName: String(fd.get('bannerName')),
+        producerName: String(fd.get('producerName')),
+        username: String(fd.get('username')),
+        password: String(fd.get('password')),
+        industry: 'Tollywood',
+        city: String(fd.get('city')),
+        aadhaarMasked: 'XXXX-XXXX-' + String(fd.get('aadhaar')).slice(-4),
+        movieFormName: 'Uploaded_Movie_Registration_Form.pdf',
+        phone: String(fd.get('phone')),
+        isApproved: false,
+        canViewContacts: false
+      });
+      saveDb();
+      ui.section = 'login';
+      showToast('Production House submitted! Admin approval required to unlock talent contacts.');
+    }
+
+    function handleAdSubmit(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      db.ads.unshift({
+        id: 'AD-' + Date.now(),
+        type: String(fd.get('type')),
+        title: String(fd.get('title')),
+        subtitle: 'Submitted via 24crofts.com',
+        banner: String(fd.get('banner')),
+        youtubeUrl: String(fd.get('youtubeUrl')),
+        image: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=1000&q=80',
+        priorityOrder: ui.viewer.role === 'admin' ? 1 : 99,
+        status: ui.viewer.role === 'admin' ? 'approved' : 'pending'
+      });
+      saveDb();
+      ui.uploadAdModalOpen = false;
+      showToast(ui.viewer.role === 'admin' ? 'Ad published live!' : 'Ad queued for Admin approval!');
+    }
+
+    function togglePaid(id) {
+      const p = db.profiles.find(x => x.id === id);
+      if (p) { p.isPaid = !p.isPaid; saveDb(); render(); }
+    }
+
+    function toggleStudio(id) {
+      const s = db.productionHouses.find(x => x.id === id);
+      if (s) { s.canViewContacts = !s.canViewContacts; s.isApproved = s.canViewContacts; saveDb(); render(); }
+    }
+
+    function moveAd(id, delta) {
+      const a = db.ads.find(x => x.id === id);
+      if (a) { a.priorityOrder = Math.max(1, a.priorityOrder + delta); saveDb(); render(); }
+    }
+
+    function toggleAdStatus(id) {
+      const a = db.ads.find(x => x.id === id);
+      if (a) { a.status = a.status === 'approved' ? 'pending' : 'approved'; saveDb(); render(); }
+    }
+
+    render();
+  </script>
+</body>
+</html>

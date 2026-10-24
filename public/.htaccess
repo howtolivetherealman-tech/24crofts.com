@@ -1,0 +1,25 @@
+# 24crofts.com — Hostinger LiteSpeed / Apache Configuration
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS for 24crofts.com
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Security Headers for Matrimonial-Grade Casting Privacy
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
+</IfModule>
+
+# Cache Static Cinema Portraits & PWA Icons
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType application/manifest+json "access plus 7 days"
+</IfModule>

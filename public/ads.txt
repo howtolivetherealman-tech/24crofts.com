@@ -1,0 +1,3 @@
+# 24crofts.com — Authorized Digital Sellers (Google AdSense)
+# Replace pub-2400240024002400 with your live Google AdSense Publisher ID from Admin Panel -> Google AdSense Console
+google.com, pub-2400240024002400, DIRECT, f08c47fec0942fa0

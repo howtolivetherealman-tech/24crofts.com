@@ -1,0 +1,8 @@
+{
+  "name": "24 Crofts",
+  "description": "A secure matrimonial platform connecting film professionals with curated profiles, categorized departments, and integrated promotional media advertising features.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
